@@ -4,7 +4,7 @@ import datetime
 import requests
 import sys
 
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "http://localhost:8000"
 
 st.set_page_config(page_title="Travel Planner", page_icon=":airplane:", 
 layout="centered",initial_sidebar_state="expanded")
