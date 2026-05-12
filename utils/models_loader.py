@@ -31,9 +31,10 @@ class ModelLoader(BaseModel):
         """
          Load and return the LLM model
          """
-        print("LLM Loading... ")
-        print(f"Loading llm from the provider {self.model_provider}")
-        openai_api_key = os.getenv("OPENAI_API_KEY")
-        model_name = self.config["llm"]["openai"]["model_name"]
-        llm = ChatOpenAI(model=model_name, api_key=openai_api_key)
-        return llm
+        if self.model_provider == "openai":
+            print("LLM Loading... ")
+            print(f"Loading llm from the provider {self.model_provider}")
+            openai_api_key = os.getenv("OPENAI_API_KEY")
+            model_name = self.config["llm"]["openai"]["model_name"]
+            llm = ChatOpenAI(model=model_name, api_key=openai_api_key)
+            return llm
