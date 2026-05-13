@@ -1,4 +1,4 @@
-from typing import Optional, Any
+from typing import Optional, Any, Literal
 from pydantic import BaseModel, Field
 # from config.config import config
 from langchain_openai import ChatOpenAI
@@ -20,8 +20,8 @@ class ConfigLoader():
 
 class ModelLoader(BaseModel):
 
-    model_provider = "openai"
-    config = Optional[ConfigLoader] = Field(default = None, exclude = True)
+    model_provider: Literal["openai","groq"] = Field(default = "openai")
+    config : Optional[ConfigLoader] = Field(default = None, exclude = True)
     def model_post_init(self, __context:Any) ->None:
         self.config = ConfigLoader()
     class Config:

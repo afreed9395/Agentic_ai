@@ -12,5 +12,7 @@ langchain_google_community
 langchain_openai
 langchain_tavily
 langgraph
+markdown
+fpdf2
 
 -e .

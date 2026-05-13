@@ -2,9 +2,17 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from agent.agentic_workflow import GraphBuilder
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 import os
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class QueryRequest(BaseModel):
     query: str
@@ -23,7 +31,7 @@ async def travel_planner(query: QueryRequest):
 
         print(f"graph saved as my_graph.png in the current working directory {os.getcwd()}")
         
-        messages = {"messages": [query.question]}
+        messages = {"messages": [query.query]}
         output = react_app.invoke(messages)
 
         if isinstance(output, dict) and "messages" in output:
