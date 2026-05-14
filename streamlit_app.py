@@ -83,7 +83,7 @@ with st.sidebar:
     )
     st.divider()
     st.markdown("**Backend**")
-    st.code(BASE_URL, language=None)
+    st.code(API_URL, language=None)
     st.caption("Start with: `uvicorn main:app --host 0.0.0.0 --port 8000`")
 
 st.markdown('<h1 class="tp-hero">Travel Planner</h1>', unsafe_allow_html=True)
@@ -130,7 +130,7 @@ with col_result:
                 st.error(f"**{response.status_code}** — {response.text}")
         except requests.RequestException as e:
             st.error(
-                f"Could not reach the API at `{BASE_URL}`. Is the server running?\n\n{e}"
+                f"Could not reach the API at `{API_URL}`. Is the server running?\n\n{e}"
             )
 
     if st.session_state.last_plan and st.session_state.last_meta:
