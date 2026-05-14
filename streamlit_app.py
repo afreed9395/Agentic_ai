@@ -5,9 +5,9 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 load_dotenv()
-API_URL = st.secrets.get("BACKEND_URL", "http://localhost:8000")
+API_URL = "https://agentic-ai-dufp.onrender.com"
 
-BASE_URL = "http://localhost:8000"
+
 
 
 @st.cache_data(show_spinner="Building PDF…")
