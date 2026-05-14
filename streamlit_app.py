@@ -2,6 +2,10 @@ import datetime
 
 import requests
 import streamlit as st
+import os
+from dotenv import load_dotenv
+load_dotenv()
+API_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 
 BASE_URL = "http://localhost:8000"
 
@@ -112,7 +116,7 @@ with col_result:
         try:
             with st.spinner("Calling the travel agent — this can take a minute…"):
                 payload = {"query": user_input.strip()}
-                response = requests.post(f"{BASE_URL}/query", json=payload, timeout=300)
+                response = requests.post(f"{API_URL}/query", json=payload, timeout=300)
 
             if response.status_code == 200:
                 answer = response.json().get("response", "No answer returned.")
