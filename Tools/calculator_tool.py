@@ -17,6 +17,8 @@ class CalculatorTool:
         @tool
         def calculate_total_expense(*costs: float) -> float:
             """Calculate total expense of the trip"""
+            if not costs:
+                return 0.0
             return self.calculator.calculate_total(*costs)
         
         @tool
