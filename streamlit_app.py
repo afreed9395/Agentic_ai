@@ -5,7 +5,7 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 load_dotenv()
-API_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+API_URL = st.secrets.get("BACKEND_URL", "http://localhost:8000")
 
 BASE_URL = "http://localhost:8000"
 
